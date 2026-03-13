@@ -28,6 +28,38 @@ public class LoginSteps {
 	    // Write code here that turns the phrase above into concrete actions
 	    
 	}
-	
+
+    @When("I click the Sign In button")
+    public void i_click_signin() {
+        driver.findElement(By.name("signin")).click();
+    }
+
+    @Then("I should be logged in successfully")
+    public void verify_login() {
+        boolean isSignOutPresent = driver.findElements(By.linkText("Sign Out")).size() > 0;
+        Assert.assertTrue("Login failed!", isSignOutPresent);
+        driver.quit();
+    }
+
+    @Given("I am on the JPetStore Sign In page where I can register as a new member")
+    public void go_to_registration() {
+        driver.get("http://104.154.34.40:8080/jpetstore/account/newaccountform");
+    }
+
+    @When("I fill in UserID {string}, password {string}, and profile info")
+    public void fill_registration(String id, String pass) {
+        driver.findElement(By.name("username")).sendKeys(id);
+        driver.findElement(By.name("password")).sendKeys(pass);
+        driver.findElement(By.name("repeatPassword")).sendKeys(pass);
+        driver.findElement(By.name("account.firstName")).sendKeys("John");
+        driver.findElement(By.name("account.lastName")).sendKeys("Doe");
+        driver.findElement(By.name("account.email")).sendKeys("test@test.com");
+    }
+
+    @When("I click {string}")
+    public void click_button(String btn) {
+        driver.findElement(By.name("newAccount")).click();
+    }
+}
 
 }
