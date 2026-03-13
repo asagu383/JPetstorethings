@@ -33,9 +33,9 @@ Feature: Test JPetStore Login
 
 
  Scenario: Update existing user password
-  Given I am logged in as "quality1"
+  Given I am logged in as "j2ee"
   When I go to My Account and change my password to 1450887
   And I click Save Account Information
-  Then I should be able to login with "quality1" and "1450887"
+  Then I should be able to login with "j2ee" and "1450887"
 	
 
