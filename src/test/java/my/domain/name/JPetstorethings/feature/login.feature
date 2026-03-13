@@ -31,3 +31,11 @@ Feature: Test JPetStore Login
     And I click the Sign In button
     Then I should see a login error message
 
+
+ Scenario: Update existing user password
+  Given I am logged in as "quality1"
+  When I go to My Account and change my password to 1450887
+  And I click Save Account Information
+  Then I should be able to login with "quality1" and "1450887"
+	
+
